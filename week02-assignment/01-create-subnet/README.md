@@ -1,0 +1,1 @@
+aws_availability_zones, aws_vpc를 사용해서 default VPC내 subnet 생성하기
