@@ -1,0 +1,55 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_instance.seunghyun-ec2 (expand)" [label = "aws_instance.seunghyun-ec2", shape = "box"]
+		"[root] aws_internet_gateway.seunghyun-igw (expand)" [label = "aws_internet_gateway.seunghyun-igw", shape = "box"]
+		"[root] aws_route.seunghyun-default-route (expand)" [label = "aws_route.seunghyun-default-route", shape = "box"]
+		"[root] aws_route_table.seunghyun-rt (expand)" [label = "aws_route_table.seunghyun-rt", shape = "box"]
+		"[root] aws_route_table_association.seunghyun-rtassociation1 (expand)" [label = "aws_route_table_association.seunghyun-rtassociation1", shape = "box"]
+		"[root] aws_route_table_association.seunghyun-rtassociation2 (expand)" [label = "aws_route_table_association.seunghyun-rtassociation2", shape = "box"]
+		"[root] aws_security_group.seunghyun-sg (expand)" [label = "aws_security_group.seunghyun-sg", shape = "box"]
+		"[root] aws_security_group_rule.seunghyun-sg-inbound (expand)" [label = "aws_security_group_rule.seunghyun-sg-inbound", shape = "box"]
+		"[root] aws_security_group_rule.seunghyun-sg-outbound (expand)" [label = "aws_security_group_rule.seunghyun-sg-outbound", shape = "box"]
+		"[root] aws_subnet.seunghyun-subnet1 (expand)" [label = "aws_subnet.seunghyun-subnet1", shape = "box"]
+		"[root] aws_subnet.seunghyun-subnet2 (expand)" [label = "aws_subnet.seunghyun-subnet2", shape = "box"]
+		"[root] aws_vpc.myvpc (expand)" [label = "aws_vpc.myvpc", shape = "box"]
+		"[root] data.aws_ami.seunghyun_amazonlinux2 (expand)" [label = "data.aws_ami.seunghyun_amazonlinux2", shape = "box"]
+		"[root] data.aws_availability_zones.available (expand)" [label = "data.aws_availability_zones.available", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] aws_instance.seunghyun-ec2 (expand)" -> "[root] aws_internet_gateway.seunghyun-igw (expand)"
+		"[root] aws_instance.seunghyun-ec2 (expand)" -> "[root] aws_security_group.seunghyun-sg (expand)"
+		"[root] aws_instance.seunghyun-ec2 (expand)" -> "[root] aws_subnet.seunghyun-subnet1 (expand)"
+		"[root] aws_instance.seunghyun-ec2 (expand)" -> "[root] data.aws_ami.seunghyun_amazonlinux2 (expand)"
+		"[root] aws_internet_gateway.seunghyun-igw (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] aws_route.seunghyun-default-route (expand)" -> "[root] aws_internet_gateway.seunghyun-igw (expand)"
+		"[root] aws_route.seunghyun-default-route (expand)" -> "[root] aws_route_table.seunghyun-rt (expand)"
+		"[root] aws_route_table.seunghyun-rt (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] aws_route_table_association.seunghyun-rtassociation1 (expand)" -> "[root] aws_route_table.seunghyun-rt (expand)"
+		"[root] aws_route_table_association.seunghyun-rtassociation1 (expand)" -> "[root] aws_subnet.seunghyun-subnet1 (expand)"
+		"[root] aws_route_table_association.seunghyun-rtassociation2 (expand)" -> "[root] aws_route_table.seunghyun-rt (expand)"
+		"[root] aws_route_table_association.seunghyun-rtassociation2 (expand)" -> "[root] aws_subnet.seunghyun-subnet2 (expand)"
+		"[root] aws_security_group.seunghyun-sg (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] aws_security_group_rule.seunghyun-sg-inbound (expand)" -> "[root] aws_security_group.seunghyun-sg (expand)"
+		"[root] aws_security_group_rule.seunghyun-sg-outbound (expand)" -> "[root] aws_security_group.seunghyun-sg (expand)"
+		"[root] aws_subnet.seunghyun-subnet1 (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] aws_subnet.seunghyun-subnet1 (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_subnet.seunghyun-subnet2 (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] aws_subnet.seunghyun-subnet2 (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_vpc.myvpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_ami.seunghyun_amazonlinux2 (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] data.aws_availability_zones.available (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] output.aws_vpc_id (expand)" -> "[root] aws_vpc.myvpc (expand)"
+		"[root] output.seunghyun_public_ip (expand)" -> "[root] aws_instance.seunghyun-ec2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_instance.seunghyun-ec2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route.seunghyun-default-route (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.seunghyun-rtassociation1 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_route_table_association.seunghyun-rtassociation2 (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group_rule.seunghyun-sg-inbound (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_security_group_rule.seunghyun-sg-outbound (expand)"
+		"[root] root" -> "[root] output.aws_vpc_id (expand)"
+		"[root] root" -> "[root] output.seunghyun_public_ip (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
