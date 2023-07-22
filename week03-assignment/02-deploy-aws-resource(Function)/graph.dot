@@ -1,0 +1,51 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_default_security_group.redshift_sg (expand)" [label = "aws_default_security_group.redshift_sg", shape = "box"]
+		"[root] aws_internet_gateway.redshift_igw (expand)" [label = "aws_internet_gateway.redshift_igw", shape = "box"]
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" [label = "aws_redshift_cluster.redshift_cluster", shape = "box"]
+		"[root] aws_redshift_subnet_group.redshift_subnet_group (expand)" [label = "aws_redshift_subnet_group.redshift_subnet_group", shape = "box"]
+		"[root] aws_subnet.redshift_subnet1 (expand)" [label = "aws_subnet.redshift_subnet1", shape = "box"]
+		"[root] aws_subnet.redshift_subnet2 (expand)" [label = "aws_subnet.redshift_subnet2", shape = "box"]
+		"[root] aws_vpc.redshift_vpc (expand)" [label = "aws_vpc.redshift_vpc", shape = "box"]
+		"[root] data.aws_availability_zones.available (expand)" [label = "data.aws_availability_zones.available", shape = "box"]
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"]" [label = "provider[\"registry.terraform.io/hashicorp/aws\"]", shape = "diamond"]
+		"[root] var.redshift_port" [label = "var.redshift_port", shape = "note"]
+		"[root] var.rs_cluster_identifier" [label = "var.rs_cluster_identifier", shape = "note"]
+		"[root] var.rs_cluster_type" [label = "var.rs_cluster_type", shape = "note"]
+		"[root] var.rs_database_name" [label = "var.rs_database_name", shape = "note"]
+		"[root] var.rs_master_passwd" [label = "var.rs_master_passwd", shape = "note"]
+		"[root] var.rs_master_username" [label = "var.rs_master_username", shape = "note"]
+		"[root] var.rs_nodetype" [label = "var.rs_nodetype", shape = "note"]
+		"[root] var.subnet1" [label = "var.subnet1", shape = "note"]
+		"[root] var.subnet2" [label = "var.subnet2", shape = "note"]
+		"[root] var.vpc_cidr" [label = "var.vpc_cidr", shape = "note"]
+		"[root] aws_default_security_group.redshift_sg (expand)" -> "[root] aws_vpc.redshift_vpc (expand)"
+		"[root] aws_default_security_group.redshift_sg (expand)" -> "[root] var.redshift_port"
+		"[root] aws_internet_gateway.redshift_igw (expand)" -> "[root] aws_vpc.redshift_vpc (expand)"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] aws_default_security_group.redshift_sg (expand)"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] aws_redshift_subnet_group.redshift_subnet_group (expand)"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_cluster_identifier"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_cluster_type"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_database_name"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_master_passwd"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_master_username"
+		"[root] aws_redshift_cluster.redshift_cluster (expand)" -> "[root] var.rs_nodetype"
+		"[root] aws_redshift_subnet_group.redshift_subnet_group (expand)" -> "[root] aws_subnet.redshift_subnet1 (expand)"
+		"[root] aws_redshift_subnet_group.redshift_subnet_group (expand)" -> "[root] aws_subnet.redshift_subnet2 (expand)"
+		"[root] aws_subnet.redshift_subnet1 (expand)" -> "[root] aws_vpc.redshift_vpc (expand)"
+		"[root] aws_subnet.redshift_subnet1 (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_subnet.redshift_subnet1 (expand)" -> "[root] var.subnet1"
+		"[root] aws_subnet.redshift_subnet2 (expand)" -> "[root] aws_vpc.redshift_vpc (expand)"
+		"[root] aws_subnet.redshift_subnet2 (expand)" -> "[root] data.aws_availability_zones.available (expand)"
+		"[root] aws_subnet.redshift_subnet2 (expand)" -> "[root] var.subnet2"
+		"[root] aws_vpc.redshift_vpc (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] aws_vpc.redshift_vpc (expand)" -> "[root] var.vpc_cidr"
+		"[root] data.aws_availability_zones.available (expand)" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"]"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_internet_gateway.redshift_igw (expand)"
+		"[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)" -> "[root] aws_redshift_cluster.redshift_cluster (expand)"
+		"[root] root" -> "[root] provider[\"registry.terraform.io/hashicorp/aws\"] (close)"
+	}
+}
+
